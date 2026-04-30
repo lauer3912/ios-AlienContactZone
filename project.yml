@@ -1,0 +1,109 @@
+name: AlienContactZone
+options:
+  bundleIdPrefix: com.ggsheng
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: "9L6N2ZF26B"
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.9"
+    IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+
+targets:
+  AlienContactZone:
+    type: application
+    platform: iOS
+    sources:
+      - path: ios-AlienContact
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.AlienContactZone
+        INFOPLIST_FILE: ios-AlienContact/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_ENTITLEMENTS: ios-AlienContact/AlienContactZone.entitlements
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: false
+        GENERATE_INFOPLIST_FILE: false
+    dependencies:
+      - target: AlienContactZoneWidgetExtension
+      - package: SnapKit
+      - package: SQLite
+
+  AlienContactZoneWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: ios-AlienContactWidget
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.AlienContactZone.widget
+        INFOPLIST_FILE: ios-AlienContactWidget/Info.plist
+        CODE_SIGN_ENTITLEMENTS: ios-AlienContactWidget/AlienContactZoneWidget.entitlements
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: false
+        SKIP_INSTALL: true
+    dependencies:
+      - sdk: SwiftUI.framework
+      - sdk: WidgetKit.framework
+
+  AlienContactZoneTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Sources/Tests
+    dependencies:
+      - target: AlienContactZone
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.AlienContactZoneTests
+        GENERATE_INFOPLIST_FILE: true
+
+  AlienContactZoneUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: Sources/UITests
+    dependencies:
+      - target: AlienContactZone
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.AlienContactZoneUITests
+        GENERATE_INFOPLIST_FILE: true
+
+packages:
+  SnapKit:
+    url: https://github.com/SnapKit/SnapKit
+    from: "5.7.0"
+  SQLite:
+    url: https://github.com/stephencelis/SQLite.swift
+    from: "0.16.0"
+
+schemes:
+  AlienContactZone:
+    build:
+      targets:
+        AlienContactZone: all
+        AlienContactZoneWidgetExtension: all
+        AlienContactZoneTests: all
+        AlienContactZoneUITests: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - AlienContactZoneTests
+        - AlienContactZoneUITests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
