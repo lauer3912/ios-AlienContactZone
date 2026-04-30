@@ -48,7 +48,7 @@ struct ContentView: View {
                 .tag(5)
                 .accessibilityIdentifier("tab_settings")
         }
-        .tint(Color.accentGreen)
+        .tint(AlienTheme.accentGreen)
     }
 }
 
