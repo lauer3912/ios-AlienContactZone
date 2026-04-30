@@ -17,9 +17,10 @@ struct SettingsView: View {
 
                 Section("Notifications") {
                     Toggle("Enable Notifications", isOn: $appState.settings.notificationsEnabled)
-                    DatePicker("Daily Reminder", displayedBindingSelection: .constant(.constant(Date())) {
-                        Text("Time")
-                    }
+                    DatePicker("Daily Reminder", selection: Binding(
+                        get: { appState.settings.notificationTime },
+                        set: { appState.settings.notificationTime = $0 }
+                    ), displayedComponents: .hourAndMinute)
                 }
                 .listRowBackground(AlienTheme.surface)
 
