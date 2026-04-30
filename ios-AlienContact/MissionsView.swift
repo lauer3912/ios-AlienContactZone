@@ -99,14 +99,14 @@ struct ActiveMissionCard: View {
                 }
             }
             HStack {
-                Label("\(mission.duration) min", systemImage: "clock", image: "")
+                Label("\(mission.duration) min", systemImage: "clock")
                     .font(.caption)
                     .foregroundColor(AlienTheme.textSecondary)
                 Spacer()
-                Label("\(mission.stardustReward)", systemImage: "sparkles", image: "")
+                Label("\(mission.stardustReward)", systemImage: "sparkles")
                     .font(.caption)
                     .foregroundColor(AlienTheme.accentPurple)
-                Label("\(mission.xpReward) XP", systemImage: "star.fill", image: "")
+                Label("\(mission.xpReward) XP", systemImage: "star.fill")
                     .font(.caption)
                     .foregroundColor(AlienTheme.accentCyan)
             }
