@@ -58,7 +58,7 @@ targets:
     type: bundle.unit-test
     platform: iOS
     sources:
-      - path: Sources/Tests
+      - path: ios-AlienContact/Tests.swift
     dependencies:
       - target: AlienContactZone
     settings:
