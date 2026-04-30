@@ -45,7 +45,7 @@ struct ChatView: View {
                         }
                         .padding()
                     }
-                    .onChange(of: appState.chatMessages.count) { _, _ in
+                    .onChange(of: appState.chatMessages.count) { _ in
                         if let lastId = filteredMessages(for: selectedNPC?.id ?? "").last?.id {
                             withAnimation {
                                 proxy.scrollTo(lastId, anchor: .bottom)
