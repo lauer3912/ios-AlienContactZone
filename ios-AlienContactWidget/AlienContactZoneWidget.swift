@@ -67,7 +67,8 @@ struct AlienWidgetEntryView: View {
                 }
             }
         }
-        .containerBackground(Color(hex: "0F0F14"), for: .widget)
+        .padding(16)
+        .background(Color(hex: "0F0F14"))
     }
 }
 
