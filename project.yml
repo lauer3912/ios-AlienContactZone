@@ -58,13 +58,15 @@ targets:
     type: bundle.unit-test
     platform: iOS
     sources:
-      - path: ios-AlienContact/Tests.swift
+      - path: Sources/Tests
     dependencies:
       - target: AlienContactZone
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.AlienContactZoneTests
         GENERATE_INFOPLIST_FILE: true
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/AlienContactZone.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AlienContactZone"
+        BUNDLE_LOADER: "$(TEST_HOST)"
 
   AlienContactZoneUITests:
     type: bundle.ui-testing
@@ -92,7 +94,6 @@ schemes:
       targets:
         AlienContactZone: all
         AlienContactZoneWidgetExtension: all
-        AlienContactZoneTests: all
         AlienContactZoneUITests: all
     run:
       config: Debug
