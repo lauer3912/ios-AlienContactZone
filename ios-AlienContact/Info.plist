@@ -46,5 +46,7 @@
     </array>
     <key>NSUserNotificationsUsageDescription</key>
     <string>Alien Contact Zone needs to send you notifications for alien missions, habit reminders, and achievement unlocks.</string>
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
 </dict>
 </plist>
